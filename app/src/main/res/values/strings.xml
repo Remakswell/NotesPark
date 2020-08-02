@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">NotesPark</string>
     <string name="action_settings">Settings</string>
+
+    <!--Login-->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Login</string>
+    <string name="action_sign_up">Create Account</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_up_short">Sign up</string>
+
+    <!--Errors-->
+    <string name="empty_field">This field cannot be empty</string>
+    <string name="invalid_email">Incorrect Email</string>
+    <string name="invalid_password">Incorrect Password. You must use at least one symbol</string>
 </resources>
