@@ -1,5 +1,7 @@
 package com.notespark.screens.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -9,6 +11,13 @@ import android.view.MenuItem
 import com.notespark.R
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        fun launch(context: Context) {
+            val intent = Intent(context, MainActivity::class.java)
+            context.startActivity(intent)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
