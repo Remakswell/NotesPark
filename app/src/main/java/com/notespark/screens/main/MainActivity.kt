@@ -8,9 +8,14 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.notespark.App
 import com.notespark.R
+import com.notespark.screens.login.LoginActivity
+import com.notespark.screens.main.di.DaggerMainComponent
+import com.notespark.screens.main.di.MainModule
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainView {
 
     companion object {
         fun launch(context: Context) {
@@ -19,10 +24,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @Inject
+    lateinit var presenter: MainPresenter
+
+    val component by lazy {
+        DaggerMainComponent.builder()
+            .appComponent((application as App).component)
+            .activity(this)
+            .plus(MainModule())
+            .build()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        component.inject(this)
         setSupportActionBar(findViewById(R.id.toolbar))
+        presenter.bindView(this)
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -31,18 +49,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+        if (item.itemId == R.id.action_settings) {
+            presenter.onLogOutClick()
         }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun openLoginActivity() {
+        LoginActivity.launch(this)
+        finish()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.unbindView()
     }
 }
