@@ -10,7 +10,7 @@ class SplashPresenter : Presenter<SplashView>() {
 
     fun startTimer() {
         Handler().postDelayed({
-            view?.openMain()
+            view?.openLogin()
         }, SPLASH_DISPLAY_TIME)
     }
 }

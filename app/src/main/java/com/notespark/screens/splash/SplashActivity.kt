@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.notespark.App
 import com.notespark.R
-import com.notespark.screens.main.MainActivity
+import com.notespark.screens.login.LoginActivity
 import com.notespark.screens.splash.di.DaggerSplashComponent
 import com.notespark.screens.splash.di.SplashModule
 import javax.inject.Inject
@@ -30,8 +30,8 @@ class SplashActivity : AppCompatActivity(), SplashView {
         presenter.startTimer()
     }
 
-    override fun openMain() {
-        MainActivity.launch(this)
+    override fun openLogin() {
+        LoginActivity.launch(this)
         finish()
     }
 
