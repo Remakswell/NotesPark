@@ -1,7 +1,7 @@
 package com.notespark.common.di
 
+import com.google.firebase.auth.FirebaseAuth
 import com.notespark.App
-import com.notespark.screens.splash.SplashActivity
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -13,6 +13,8 @@ interface AppComponent {
     fun inject(target: App)
 
     fun app(): App
+
+    fun auth(): FirebaseAuth
 
     @Component.Builder
     interface Builder {
