@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.notespark.App
 import com.notespark.R
-import com.notespark.common.Util.trimmedString
+import com.notespark.common.util.trimmedString
 import com.notespark.screens.login.di.DaggerLoginComponent
 import com.notespark.screens.login.di.LoginModule
 import kotlinx.android.synthetic.main.activity_login.*

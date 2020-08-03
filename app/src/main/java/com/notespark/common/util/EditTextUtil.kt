@@ -1,4 +1,4 @@
-package com.notespark.common.Util
+package com.notespark.common.util
 
 import android.widget.EditText
 

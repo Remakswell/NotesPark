@@ -1,7 +1,7 @@
 package com.notespark.screens.login
 
-import com.notespark.common.Util.ValidatorUtil.isEmailValid
-import com.notespark.common.Util.ValidatorUtil.isPasswordValid
+import com.notespark.common.util.ValidatorUtil.isEmailValid
+import com.notespark.common.util.ValidatorUtil.isPasswordValid
 import com.notespark.common.arch.Presenter
 
 class LoginPresenter : Presenter<LoginView>() {
