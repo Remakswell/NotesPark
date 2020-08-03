@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/app_margin_medium"
-    tools:context=".screens.login.LoginActivity">
+    tools:context=".screens.registration.RegistrationActivity">
 
     <EditText
         android:id="@+id/emailInput"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailInput" />
 
     <Button
-        android:id="@+id/signInBtn"
+        android:id="@+id/createAccountBtn"
         style="@style/Button.Orange"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
         android:layout_marginBottom="64dp"
         android:enabled="false"
         android:padding="@dimen/app_margin_small"
-        android:text="@string/action_sign_in"
+        android:text="@string/action_sign_up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,16 +75,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
-    <TextView
-        android:id="@+id/createAccountBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/register_background"
-        android:layout_marginTop="@dimen/app_margin_semi_large"
-        android:padding="5dp"
-        android:fontFamily="@font/muller_bold"
-        android:text="@string/action_sign_up"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
