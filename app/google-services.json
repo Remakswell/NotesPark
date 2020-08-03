@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "54696381447",
+    "firebase_url": "https://notespark-a1e74.firebaseio.com",
+    "project_id": "notespark-a1e74",
+    "storage_bucket": "notespark-a1e74.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54696381447:android:ee9887da21f673bec6aea2",
+        "android_client_info": {
+          "package_name": "com.notespark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54696381447-096dfkfgamdhs6dn7o5qsahjp7i1qvmi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUKL44BG_JrMQ4LWFaSGFzXRrq-E_4ikg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54696381447-096dfkfgamdhs6dn7o5qsahjp7i1qvmi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
