@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NotesPark</string>
+    <string name="app_name">Notes Park</string>
     <string name="action_log_out">Log out</string>
 
     <!--Login-->
