@@ -21,7 +21,8 @@
         </activity>
         <activity
             android:name=".screens.main.MainActivity"
-            android:label="All notes" />
+            android:label="All notes"
+            android:theme="@style/AppTheme.OverlapSystemBar"/>
     </application>
 
 </manifest>
