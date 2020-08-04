@@ -8,6 +8,7 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import com.notespark.App
 import com.notespark.R
 import com.notespark.screens.login.LoginActivity
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_settings) {
-            presenter.onLogOutClick()
+            logoutDialog()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -68,5 +69,13 @@ class MainActivity : AppCompatActivity(), MainView {
     override fun onDestroy() {
         super.onDestroy()
         presenter.unbindView()
+    }
+
+    private fun logoutDialog() {
+        AlertDialog.Builder(this)
+            .setMessage(R.string.logout_message)
+            .setPositiveButton(android.R.string.ok) { _, _ -> presenter.onLogOutClick() }
+            .setNegativeButton(android.R.string.cancel) { _, _ -> }
+            .show()
     }
 }

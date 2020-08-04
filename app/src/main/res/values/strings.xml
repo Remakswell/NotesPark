@@ -2,6 +2,9 @@
     <string name="app_name">Notes Park</string>
     <string name="action_log_out">Log out</string>
 
+    <!--Main-->
+    <string name="logout_message">Do you want to logout?</string>
+
     <!--Login-->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
