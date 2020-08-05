@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".screens.add.AddActivity" />
+            android:name=".screens.add.AddActivity"
+            android:windowSoftInputMode="stateVisible"/>
         <activity android:name=".screens.registration.RegistrationActivity" />
         <activity android:name=".screens.login.LoginActivity" />
         <activity android:name=".screens.splash.SplashActivity">

@@ -2,8 +2,8 @@ package com.notespark.screens.add
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.notespark.App
 import com.notespark.R
 import com.notespark.screens.add.di.AddModule
@@ -48,5 +48,7 @@ class AddActivity : AppCompatActivity(), AddView {
         addToolbar.setNavigationIcon(R.drawable.ic_back)
         addToolbar.setNavigationOnClickListener { finish() }
         addToolbar.title = "Add"
+
+        editDescription.requestFocus()
     }
 }
