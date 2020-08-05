@@ -8,4 +8,8 @@ class MainPresenter(private val auth: FirebaseAuth) : Presenter<MainView>() {
         auth.signOut()
         view?.openLoginActivity()
     }
+
+    fun onAddClick(){
+        view?.openAddActivity()
+    }
 }

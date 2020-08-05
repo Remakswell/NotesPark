@@ -19,4 +19,9 @@
     <string name="welcome">Welcome</string>
     <string name="authentication_failed">Authentication failed.</string>
     <string name="please_create_an_account">Please create an account</string>
+
+    <!--Add-->
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="save">SAVE</string>
 </resources>

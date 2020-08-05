@@ -11,9 +11,11 @@ import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import com.notespark.App
 import com.notespark.R
+import com.notespark.screens.add.AddActivity
 import com.notespark.screens.login.LoginActivity
 import com.notespark.screens.main.di.DaggerMainComponent
 import com.notespark.screens.main.di.MainModule
+import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainView {
@@ -40,12 +42,11 @@ class MainActivity : AppCompatActivity(), MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         component.inject(this)
-        setSupportActionBar(findViewById(R.id.toolbar))
+        setSupportActionBar(toolbar)
         presenter.bindView(this)
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            presenter.onAddClick()
         }
     }
 
@@ -64,6 +65,10 @@ class MainActivity : AppCompatActivity(), MainView {
     override fun openLoginActivity() {
         LoginActivity.launch(this)
         finish()
+    }
+
+    override fun openAddActivity() {
+        AddActivity.launch(this)
     }
 
     override fun onDestroy() {
