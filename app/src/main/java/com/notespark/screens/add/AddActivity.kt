@@ -1,8 +1,10 @@
 package com.notespark.screens.add
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.notespark.App
 import com.notespark.R
@@ -44,11 +46,27 @@ class AddActivity : AppCompatActivity(), AddView {
         presenter.unbindView()
     }
 
+    override fun showEmptyDataToast() {
+        Toast.makeText(this, getString(R.string.nothing_to_save), Toast.LENGTH_LONG).show()
+    }
+
+    override fun sendResult(title: String, notes: String) {
+        val intent = Intent()
+        intent.putExtra("title", title)
+        intent.putExtra("notes", notes)
+        setResult(Activity.RESULT_OK, intent)
+    }
+
     private fun initView(){
         addToolbar.setNavigationIcon(R.drawable.ic_back)
         addToolbar.setNavigationOnClickListener { finish() }
         addToolbar.title = "Add"
 
-        editDescription.requestFocus()
+        editNotes.requestFocus()
+
+        saveBtn.setOnClickListener {
+            presenter.onSaveBtnClick(editTitle.text.toString(), editNotes.text.toString())
+            finish()
+        }
     }
 }
