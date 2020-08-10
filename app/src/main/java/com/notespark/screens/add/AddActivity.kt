@@ -64,6 +64,10 @@ class AddActivity : AppCompatActivity(), AddView {
 
         editNotes.requestFocus()
 
+        editTitle.setText(intent.getStringExtra("title"))
+        editNotes.setText(intent.getStringExtra("notes"))
+
+
         saveBtn.setOnClickListener {
             presenter.onSaveBtnClick(editTitle.text.toString(), editNotes.text.toString())
             finish()

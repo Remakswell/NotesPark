@@ -39,7 +39,12 @@ class NotesAdapter(private val itemClick: OnItemClickListener): RecyclerView.Ada
         notifyItemInserted(itemCount - 1)
     }
 
+    fun updateItem(itemNotes: ItemNotes, position: Int){
+        notesList[position] = itemNotes
+        notifyDataSetChanged()
+    }
+
     interface OnItemClickListener {
-        fun onItemClick(title: String, notes: String, index: Int)
+        fun onItemClick(title: String, notes: String, position: Int)
     }
 }

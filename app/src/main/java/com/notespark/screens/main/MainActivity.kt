@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity(), MainView {
             context.startActivity(intent)
         }
 
-        private const val REQUEST_CODE_NEW_NOTES = 11
+        private const val REQUEST_CODE_CREATE_NOTES = 11
+        private const val REQUEST_CODE_CHANGE_NOTES = 22
     }
 
     @Inject
@@ -70,9 +71,16 @@ class MainActivity : AppCompatActivity(), MainView {
         finish()
     }
 
-    override fun openAddActivity() {
+    override fun createNotes() {
         val intent = Intent(this, AddActivity::class.java)
-        startActivityForResult(intent, REQUEST_CODE_NEW_NOTES)
+        startActivityForResult(intent, REQUEST_CODE_CREATE_NOTES)
+    }
+
+    override fun changeNotes(title: String, notes: String) {
+        val intent = Intent(this, AddActivity::class.java)
+        intent.putExtra("title", title)
+        intent.putExtra("notes", notes)
+        startActivityForResult(intent, REQUEST_CODE_CHANGE_NOTES)
     }
 
     override fun onDestroy() {
@@ -83,11 +91,16 @@ class MainActivity : AppCompatActivity(), MainView {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == REQUEST_CODE_NEW_NOTES) {
-            if (data != null){
-                val title = data.getStringExtra("title")
-                val notes = data.getStringExtra("notes")
+        val title = data?.getStringExtra("title").toString()
+        val notes = data?.getStringExtra("notes").toString()
+
+        when (requestCode) {
+            REQUEST_CODE_CREATE_NOTES -> {
                 adapter?.addItem(ItemNotes(title, notes))
+
+            }
+            REQUEST_CODE_CHANGE_NOTES -> {
+                adapter?.updateItem(ItemNotes(title, notes), itemPosition)
             }
         }
     }
@@ -109,9 +122,9 @@ class MainActivity : AppCompatActivity(), MainView {
 
     private fun initAdapter(){
         adapter = NotesAdapter(object : NotesAdapter.OnItemClickListener{
-            override fun onItemClick(title: String, notes: String, index: Int) {
-                itemPosition = index
-                openAddActivity()
+            override fun onItemClick(title: String, notes: String, position: Int) {
+                itemPosition = position
+                presenter.onItemClick(title, notes)
             }
         })
         recyclerNotesList.adapter = adapter
