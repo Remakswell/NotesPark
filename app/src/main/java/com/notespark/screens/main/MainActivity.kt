@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.GridLayoutManager
 import com.notespark.App
 import com.notespark.R
 import com.notespark.screens.add.AddActivity
@@ -127,6 +128,8 @@ class MainActivity : AppCompatActivity(), MainView {
                 presenter.onItemClick(title, notes)
             }
         })
+        val manager = GridLayoutManager(this, 2)
+        recyclerNotesList.layoutManager = manager
         recyclerNotesList.adapter = adapter
     }
 }
