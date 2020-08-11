@@ -1,8 +1,6 @@
 package com.notespark.screens.main
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -25,22 +23,25 @@ class NotesAdapter(private val itemClick: OnItemClickListener): RecyclerView.Ada
         holder.title.text = item.title
         holder.notes.text = item.notes
 
-        holder.emailContainer.setOnClickListener { itemClick.onItemClick(item.title!!, item.notes!!, position) }
+        holder.notesContainer.setOnClickListener { itemClick.onItemClick(item.title!!, item.notes!!, position) }
     }
 
-    class ItemVH(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class ItemVH(itemView: View): RecyclerView.ViewHolder(itemView), View.OnCreateContextMenuListener {
         val title: TextView = itemView.findViewById(R.id.itemTitle)
         val notes: TextView = itemView.findViewById(R.id.itemNotes)
-        val emailContainer: LinearLayout = itemView.findViewById(R.id.notesContainer)
+        val notesContainer: LinearLayout = itemView.findViewById(R.id.notesContainer)
+
+        init {
+            notesContainer.setOnCreateContextMenuListener(this)
+        }
+
+        override fun onCreateContextMenu(menu: ContextMenu?, p1: View?, p2: ContextMenu.ContextMenuInfo?) {
+            menu?.add(adapterPosition, 101, 0, "Delete")
+        }
     }
 
-    fun addItem(itemNotes: ItemNotes) {
-        notesList.add(itemNotes)
-        notifyItemInserted(itemCount - 1)
-    }
-
-    fun updateItem(itemNotes: ItemNotes, position: Int){
-        notesList[position] = itemNotes
+    fun updateList(list: MutableList<ItemNotes>){
+        this.notesList = list
         notifyDataSetChanged()
     }
 

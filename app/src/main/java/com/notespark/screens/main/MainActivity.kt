@@ -3,12 +3,12 @@ package com.notespark.screens.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.notespark.App
 import com.notespark.R
 import com.notespark.screens.add.AddActivity
@@ -94,15 +94,28 @@ class MainActivity : AppCompatActivity(), MainView {
 
         val title = data?.getStringExtra("title").toString()
         val notes = data?.getStringExtra("notes").toString()
+        if (data == null) return
 
         when (requestCode) {
             REQUEST_CODE_CREATE_NOTES -> {
-                adapter?.addItem(ItemNotes(title, notes))
+                notesList.add(ItemNotes(title, notes))
+                adapter?.updateList(notesList)
 
             }
             REQUEST_CODE_CHANGE_NOTES -> {
-                adapter?.updateItem(ItemNotes(title, notes), itemPosition)
+                notesList[itemPosition] = ItemNotes(title, notes)
+                adapter?.updateList(notesList)
             }
+        }
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        return if (item.itemId == 101) {
+            notesList.removeAt(item.groupId)
+            adapter?.updateList(notesList)
+            true
+        } else {
+            super.onContextItemSelected(item)
         }
     }
 
